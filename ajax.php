@@ -8,12 +8,12 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $total_row = $stmt->rowCount();
 
 $output = '
-<table
+<table class="table table-striped table-bordered"
      <tr>
-     <th>name</th>
+     <th>Name</th>
      <th>Message</th>
-     <th>edit</th>
-     <th>delete</th>
+     <th>Edit</th>
+     <th>Delete</th>
      
      </tr>
 ';
@@ -23,13 +23,14 @@ $output = '
 if($total_row > 0){
     foreach ($messages as $row) {
         $output.= '
+
         <tr>
-          <td>'.$row["user_name"].'</td>
-          <td>'.$row["user_message"].'</td>
-          <td>
+          <td width="40%">'.$row["user_name"].'</td>
+          <td width="40%">'.$row["user_message"].'</td>
+          <td width="10%">
           <button type="button" name="edit" class="btn btn-primary btn-xs edit" id="'.$row["user_id"].'">edit</button>
 </td>
-          <td>
+          <td width="10%">
           <button type="button" name="delete" class="btn btn-primary btn-xs delete" id="'.$row["user_id"].'">delete</button>
 </td>
         </tr>
