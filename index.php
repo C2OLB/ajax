@@ -39,6 +39,7 @@
                 </div>
                 <div class="form-group">
                     <input type="hidden" name="action" id="action" value="insert" />
+                    <input type="file" name="file" id="file">
                     <input type="hidden" name="hidden_id" id="hidden_id"/>
                     <input type="submit" name="form_action" id="form_action" class="btn btn-info" value="Insert" />
                 </div>
@@ -86,11 +87,13 @@
        $('#user_form').on('submit', function (event) {
            event.preventDefault();
            $('#form_action').attr('disable','disable');
-           var form_data = $(this).serialize();
+           //var form_data = $(this).serialize();
            $.ajax({
                url:"action.php",
                method:"POST",
-               data:form_data,
+               data: new FormData($('#user_form')[0]),
+               processData:false,
+               contentType:false,
                success: function (data) {
                    $('#user_dialog').dialog('close');
                    $('#action_alert').html(data);

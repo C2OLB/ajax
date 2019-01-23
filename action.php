@@ -3,6 +3,8 @@ include ('db_con.php');
 
 //var_dump($_POST["user_id"]);
 
+$file_name = $_FILES["file"]["name"];
+$tmp_name = $_FILES["file"]['tmp_name'];
 
 if(isset($_POST["action"])) {
     if ($_POST["action"] == "insert") {
@@ -17,6 +19,15 @@ if(isset($_POST["action"])) {
         $sql = "INSERT INTO messages (user_message,user_id) VALUES ('" . $_POST["message"] . "',$user_id)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
+
+        move_uploaded_file($tmp_name,'files/'. $file_name);
+        //$location = 'files/' . $file_name;
+
+
+        $sql = "INSERT INTO images (user_image_name,user_id) VALUES ('".$file_name."',$user_id)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(array($file_name, 'files/'.$file_name));
+
 
         $pdo->commit();
         echo '<p>Data inserted...</p>';

@@ -1,7 +1,7 @@
 <?php
 include('db_con.php');
 
-$sql = "SELECT * FROM messages m  JOIN users u ON m.user_id = u.user_id";
+$sql = "SELECT * FROM messages m  JOIN users u ON m.user_id = u.user_id JOIN images i ON i.user_id = u.user_id";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -14,6 +14,7 @@ $output = '
      <th>Message</th>
      <th>Edit</th>
      <th>Delete</th>
+     <th>Image</th>
      
      </tr>
 ';
@@ -32,6 +33,9 @@ if($total_row > 0){
 </td>
           <td width="10%">
           <button type="button" name="delete" class="btn btn-primary btn-xs delete" id="'.$row["user_id"].'">delete</button>
+</td>
+          <td>
+          <img src="files/'.$row["user_image_name"].'"class="img-thumbnail" width="100" height="100"/>
 </td>
         </tr>
         ';
