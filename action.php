@@ -59,6 +59,14 @@ if(isset($_POST["action"])) {
         $statement = $pdo->prepare($query);
         $statement->execute();
 
+        move_uploaded_file($tmp_name,'files/'. $file_name);
+        //$location = 'files/' . $file_name;
+
+
+        $sql = "UPDATE images SET user_image_name = '".$file_name."' WHERE user_id = '" . $_POST["hidden_id"] . "'";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(array($file_name, 'files/'.$file_name));
+
         $pdo->commit();
 
     }

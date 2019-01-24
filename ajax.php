@@ -35,7 +35,7 @@ if($total_row > 0){
           <button type="button" name="delete" class="btn btn-primary btn-xs delete" id="'.$row["user_id"].'">delete</button>
 </td>
           <td>
-          <img src="files/'.$row["user_image_name"].'"class="img-thumbnail" width="100" height="100"/>
+          <img src="files/'.$row["user_image_name"].'"class="img-thumbnail" width="100" height="100" onclick="window.open(this.src)"/>
 </td>
         </tr>
         ';

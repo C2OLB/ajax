@@ -8,8 +8,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
-
+    <link rel="stylesheet" href="lb/bootstrap-lightbox.css">
+    <script src="lb/bootstrap-lightbox.js"></script>
 </head>
 
 <body>
@@ -39,8 +39,8 @@
                 </div>
                 <div class="form-group">
                     <input type="hidden" name="action" id="action" value="insert" />
-                    <input type="file" name="file" id="file">
-                    <input type="hidden" name="hidden_id" id="hidden_id"/>
+                    <input type="file" name="file" id="file" />
+                    <input type="hidden" name="hidden_id" id="hidden_id">
                     <input type="submit" name="form_action" id="form_action" class="btn btn-info" value="Insert" />
                 </div>
             </form>
@@ -52,6 +52,8 @@
         <div id="delete_confirmation" title="confirmation">
             <p>Are you sure ?</p>
         </div>
+
+
 </body>
 </html>
 
@@ -162,3 +164,4 @@
     });
 
 </script>
+
