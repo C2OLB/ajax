@@ -8,8 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="lb/bootstrap-lightbox.css">
-    <script src="lb/bootstrap-lightbox.js"></script>
+
 </head>
 
 <body>
@@ -23,6 +22,12 @@
                 <button type="button" name="add" id="add" class="btn btn-success btn-xs">Add</button>
             </div>
 
+    <div align="left">
+        <input type="text" name="search" id="search" placeholder="Search here" class="form-control">
+    </div>
+
+    <div id="user_search" class="table-responsive"
+</div>
 
             <div id="user_data" class="table-responsive"
         </div>
@@ -58,6 +63,8 @@
 </html>
 
 <script>
+
+
     $(document).ready(function(){
 
         load_data();
@@ -161,6 +168,21 @@
             var id = $(this).attr("id");
             $('#delete_confirmation').data('id', id).dialog('open');
         });
+
+        $('#search').keyup(function () {
+            var txt = $(this).val();
+            var action = 'search';
+            $.ajax({
+               url:"action.php",
+               method:"POST",
+               data:{search:txt,action:action},
+                success:function (data) {
+                    $('#user_search').html(data);
+                }
+            });
+        })
+
+
     });
 
 </script>
